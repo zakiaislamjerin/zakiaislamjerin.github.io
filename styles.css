@@ -105,6 +105,7 @@
             position: relative;
             z-index: 10;
             width: 92%;
+                height: 92%;
             max-width: 480px;
             perspective: 1200px;
         }
