@@ -120,7 +120,7 @@
             padding: 25px 25px;
             text-align: center;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-            height: 85vh;
+            height: 75vh;
             width: auto;
             display: flex;
             flex-direction: column;
@@ -220,7 +220,7 @@
             color: var(--text);
             border: 1px solid rgba(255, 255, 255, 0.18);
             padding: 8px 16px;
-            font-size: clamp(0.5rem, 3vw, 1rem);
+            font-size: clamp(0.4rem, 2vw, .8rem);
             font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
@@ -279,14 +279,14 @@
             font-size: 1.75rem;
             margin-bottom: 14px;
             color: var(--primary);
-            font-weight: clamp(0.6rem, 5vw, 1.5rem);
+            font-weight: clamp(0.5rem, 2.5vw, 1rem);
             ;
         }
 
         p {
             color: var(--text-muted);
             line-height: 1.55;
-            font-size: clamp(0.5rem, 3vw, 1rem);
+            font-size: clamp(0.4rem, 2vw, .8rem);
             ;
         }
 
@@ -342,7 +342,7 @@
             text-align: left;
             width: 100%;
             font-family: 'Courier New', Courier, monospace;
-            font-size: 0.85rem;
+            font-size: clamp(0.4rem, 2vw, .8rem);
             border: 1px solid #30363d;
             margin: 18px 0;
             line-height: 1.4;
@@ -381,7 +381,7 @@
         .scan-results {
             display: none;
             text-align: left;
-            font-size: 0.95rem;
+            font-size: clamp(0.5rem, 2vw, 1rem);
             margin-top: 10px;
             line-height: 1.6;
         }
