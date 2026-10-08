@@ -43,7 +43,7 @@
                     }, 600);
                 } else {
                     errorMsg.style.display = "block";
-                    errorMsg.innerText = "❌ Intruder Alert! SHA-256 Signature Mismatch! 😜";
+                    errorMsg.innerText = "❌ Intruder Alert! Credentials Mismatched! 😜";
                     document.getElementById('login-pin').style.borderColor = "#ff4757";
                 }
             } catch (err) {
