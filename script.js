@@ -11,6 +11,37 @@
         document.getElementById('draw-4').src = "assets/draw-4.jpg";
         document.getElementById('party-frame').src = "assets/party-frame.jpg";
 
+function verifyLogin() {
+            const nameInput = document.getElementById('login-username').value.trim();
+            const pinInput = document.getElementById('login-pin').value.trim();
+            const errorMsg = document.getElementById('login-error');
+
+            // এখানে নাম এবং পিন সেট করা হয়েছে (Case-insensitive নামের জন্য lowercase করা হয়েছে)
+            const targetName = "jerin271026";
+            const targetPIN = "271026"; // DDMMYY
+
+            if (nameInput.toLowerCase() === targetName && pinInput === targetPIN) {
+                // সঠিক হলে লগইন স্ক্রিনটি স্লাইড আউট হয়ে ভ্যানিশ হয়ে যাবে
+                const overlay = document.getElementById('login-overlay');
+                overlay.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+                overlay.style.opacity = "0";
+                overlay.style.transform = "scale(1.1)";
+
+                setTimeout(() => {
+                    overlay.style.display = "none";
+                    // প্রথম গিফটের বক্সে অটো ফোকাস বা একটা কনফেটি বাস্ট দিতে পারেন
+                    if (typeof burstConfetti === "function") burstConfetti();
+                }, 600);
+            } else {
+                // ভুল তথ্য দিলে লাল রঙের এরর মেসেজ শো করবে
+                errorMsg.style.display = "block";
+                errorMsg.innerText = "❌ Intruder Alert! Invalid Diva Credentials! 😜";
+
+                // ইনপুট বক্স একটু কাঁপানোর জন্য ছোট ট্রিক
+                document.getElementById('login-pin').style.borderColor = "#ff4757";
+            }
+        }
+
         // --- CORE NAVIGATION STATE & TOUCH INSTANTIATION ---
         let activeLayer = 1;
         const finalLayerCount = 11;
