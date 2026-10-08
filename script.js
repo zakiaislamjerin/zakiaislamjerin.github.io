@@ -32,7 +32,7 @@
                 const inputPinHash = await sha256(pinInput);
 
                 if (inputNameHash === secureNameHash && inputPinHash === securePinHash) {
-                    buildMainBirthdayLayers();
+                    // buildMainBirthdayLayers();
                     const overlay = document.getElementById('login-overlay');
                     overlay.style.transition = "opacity 0.6s ease, transform 0.6s ease";
                     overlay.style.opacity = "0";
