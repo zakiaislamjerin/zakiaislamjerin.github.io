@@ -17,8 +17,8 @@ function verifyLogin() {
             const errorMsg = document.getElementById('login-error');
 
             // এখানে নাম এবং পিন সেট করা হয়েছে (Case-insensitive নামের জন্য lowercase করা হয়েছে)
-            const targetName = "jerin271026";
-            const targetPIN = "271026"; // DDMMYY
+            const targetName = "amVyaW4yNzEwMjY=";
+            const targetPIN = "MjcxMDI2";
 
             if (nameInput.toLowerCase() === targetName && pinInput === targetPIN) {
                 // সঠিক হলে লগইন স্ক্রিনটি স্লাইড আউট হয়ে ভ্যানিশ হয়ে যাবে
