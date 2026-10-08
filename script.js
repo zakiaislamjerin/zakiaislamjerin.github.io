@@ -11,7 +11,7 @@
         document.getElementById('draw-4').src = "assets/draw-4.jpg";
         document.getElementById('party-frame').src = "assets/party-frame.jpg";
 
-//LOGIN SECTION:
+        //LOGIN SECTION:
         async function sha256(message) {
             const msgUint8 = new TextEncoder().encode(message);
             const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8);
@@ -32,6 +32,7 @@
                 const inputPinHash = await sha256(pinInput);
 
                 if (inputNameHash === secureNameHash && inputPinHash === securePinHash) {
+                    buildMainBirthdayLayers();
                     const overlay = document.getElementById('login-overlay');
                     overlay.style.transition = "opacity 0.6s ease, transform 0.6s ease";
                     overlay.style.opacity = "0";
@@ -56,12 +57,14 @@
         const finalLayerCount = 11;
         let isUnlocked = false;
 
+        // Variables to handle swipe gestures
         let touchStartX = 0;
         let touchEndX = 0;
-        const swipeThreshold = 50; 
+        const swipeThreshold = 50; // Minimum sliding distance in pixels to count as a swap
 
         const mainCard = document.getElementById('main-card');
 
+        // Capture touch coordinates on mobile/touch displays
         mainCard.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
         }, {
@@ -75,8 +78,9 @@
             passive: true
         });
 
+        // Evaluates horizontal vector displacements to step layers left or right
         function handleSwipeGesture() {
-            if (!isUnlocked) return;
+            if (!isUnlocked) return; // Prevent swipe gestures before opening the gift box
 
             const displacement = touchEndX - touchStartX;
 
@@ -113,20 +117,24 @@
             const targetElement = document.getElementById(`layer-${activeLayer}`);
             targetElement.classList.add('active');
 
+            // Apply corresponding slide direction layout vectors
             if (animationDirection === 'right') {
                 targetElement.classList.add('slide-from-right');
             } else if (animationDirection === 'left') {
                 targetElement.classList.add('slide-from-left');
             }
 
+            // Sync button controller visibility state flags
             document.getElementById('prev-btn').disabled = (activeLayer === 2);
             document.getElementById('next-btn').style.visibility = (activeLayer === finalLayerCount) ? 'hidden' : 'visible';
 
+            // Synchronize step-indicator tracking dot arrays
             const dots = document.querySelectorAll('.dot');
             dots.forEach((d, idx) => {
                 d.classList.toggle('active', idx === (activeLayer - 1));
             });
 
+            // HANDLE BACKGROUND LAYER TRANMUTATIONS
             if (activeLayer === finalLayerCount) {
                 clearInterval(particleInterval);
                 particleContainer.innerHTML = '';
@@ -256,7 +264,7 @@
         mainLoop();
         buildTrackingDots();
 
-// --- press ENTER button to submit ---
+        // --- press ENTER button to submit ---
         document.addEventListener("DOMContentLoaded", () => {
             const nameInputField = document.getElementById('login-username');
             const pinInputField = document.getElementById('login-pin');
@@ -271,6 +279,7 @@
                 });
             }
 
+
             if (pinInputField) {
                 pinInputField.addEventListener("keypress", (event) => {
                     if (event.key === "Enter") {
@@ -280,3 +289,18 @@
                 });
             }
         });
+
+        // DEV security
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "F12" ||
+                (e.ctrlKey && e.shiftKey && e.key === "I") ||
+                (e.ctrlKey && e.shiftKey && e.key === "J") ||
+                (e.ctrlKey && e.key === "U")) {
+                e.preventDefault();
+                alert("🚨 ACCESS DENIED: Firewall alert!");
+            }
+        });
+        setInterval(function () {
+            debugger;
+        }, 100);
