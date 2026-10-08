@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy 14th Birthday Goddess Diva! 👑</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <canvas id="confetti-canvas" style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:5;"></canvas>
+    <div class="particle-container" id="particle-container"></div>
+    <div class="balloon-container" id="balloon-container"></div>
+
+    <div class="container">
+        <!-- The main glass card wrapper captures interactive swipe gestures -->
+        <div class="card" id="main-card">
+
+            <!-- LAYER 1: ENCRYPTED STORAGE BOX -->
+            <div class="layer active" id="layer-1">
+                <div class="layer-content-other">
+                    <div>
+                        <div class="icon-large" onclick="unlockStory()" style="cursor:pointer;">🎁</div>
+                        <h2 style="margin-top:18px;">Private Access Vault</h2>
+                        <p>A highly secure interactive surprise package has arrived only for you, <strong>Jerin</strong>.</p>
+                        <br />
+                        <br />
+                        <p><strong>Get Hidden and Explore Secretly!</strong><span>&#x1F92B;</span>.</p>
+                        <p style="font-size:0.85rem; margin-top:14px; color:var(--accent); font-weight:600;">[ TAP GIFT BOX TO DECRYPT FILE ]</p>
+                    </div>
+                    <div>
+                        <p style="color:red"><strong><span>⚠️</span>Caution:</strong> Forbidden to share with anyone!<span>❌</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LAYER 2: INTERNET TRAFFIC INTERRUPTION -->
+            <div class="layer" id="layer-2">
+                <div class="layer-content-other">
+                    <div>
+                        <div class="icon-large">🚨</div>
+                        <h2>Social Sites Overload!</h2>
+                        <p><strong><span style="color:red">⚠️ SECURITY BREACH DETECTION:</span></strong></p>
+
+                        <p style="font-size: 1.2rem; color: #ff4757; font-weight: bold; margin: 10px 0;">
+                            Your Instagram & Snapchat Streaks have been officially IMPOSING A FREEZE! 🛑🤣
+                        </p>
+
+                        <p>
+                            Mark Zuckerberg and the Snapchat Core Algorithm Team just ran an emergency server reboot because the radiant of your beauty and aura is literally causing a worldwide system crash! 📈💀 YOU ARE THE CRUSH!
+                        </p>
+
+                        <p style="margin-top: 12px;">
+                            Legally, under Article 2026 of the Cyber Glamour Act, spending <strong>14 consecutive years</strong> being this pretty, effortlessly smart, and dangerously intelligent breaks every single database guideline we have! 💅🔥
+                        </p>
+
+                        <p style="font-size: 0.9rem; color: var(--accent); font-style: italic; margin-top: 15px;">
+                            [ ERROR CODE: 404_TOO_MUCH_DIVA_ENERGY ] <br>
+                        </p>
+
+                    </div>
+                    <div>
+                        <p style="font-size:0.8rem; margin-top:15px; color:var(--accent);">👉 Swipe LEFT or click Next to continue</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- LAYER 3: TODDLER DIARIES GALLERY -->
+            <div class="layer" id="layer-3">
+                <div class="layer-content-other">
+                    <div>
+                        <h2>The Evolution Matrix 👶</h2>
+                        <p>Before becoming a modern social media icon, you were fully dedicated to making these legendary facial expressions:</p>
+                        <div class="grid-1x1">
+                            <img src="" id="child-1" class="grid-img" alt="Baby 1">
+                            <div class="grid-1x3">
+                                <img src="" id="child-2" class="grid-img" alt="Baby 2">
+                                <img src="" id="child-3" class="grid-img" alt="Baby 3">
+                                <img src="" id="child-4" class="grid-img" alt="Baby 4">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p style="font-size:0.85rem; color:#a8c1ef;">Rumor has it, you were looking at an vintage iPhone even back then!<span>&#128521;</span></p>
+                        <br />
+                        <p style="font-size:0.8rem; margin-top:15px; color:var(--accent);">👉 Swipe LEFT or click Next to continue</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- LAYER 4: DIVA SHOWCASE -->
+            <div class="layer" id="layer-4">
+                <div class="layer-content-other">
+                    <div>
+                        <h2>"Goddess Diva" Vibe ✨</h2>
+                        <p>Fast forward to today! The camera completely bows down to you, and your makeup and modeling shoots are total perfection.</p>
+                        <img src="" id="diva-1" class="image-frame" alt="Goddess Diva Style">
+                        <p style="font-size:0.92rem;">Unapologetically modern, charming and smart.</p>
+                    </div>
+                </div>
+                <div>
+                    <p style="font-size:0.8rem; margin-top:15px; color:var(--accent);">👉 Swipe LEFT or click Next to continue</p>
+                </div>
+            </div>
+
+            <!-- LAYER 5: COMPUTER SCIENCE CHALLENGE -->
+            <div class="layer" id="layer-5">
+                <div class="layer-content-other">
+                    <div>
+                        <h2>Coding = Digital Drawing 💻</h2>
+                        <p>I know that you can create gorgeous art with your softer hands. I belive, you can do the Programming as exactly the same with some small efforts — get ready to paint with code logic!</p>
+                        <div class="code-box">
+                            <span class="code-keyword">const</span> <span class="code-var">diva</span> = <span class="code-string">"Jerin"</span>;<br>
+                            <span class="code-keyword">if</span> (<span class="code-var">diva</span>.isSuperSmart) {<br>
+                            &nbsp;&nbsp;console.log(<span class="code-string">"👑 Status: Future Silicon Valley Queen"</span>);<br>
+                            }
+                        </div>
+                        <p>Smart minds run the tech world. Time to learn code and build your own creative Dev profile!</p>
+                    </div>
+                    <div>
+                        <p style="font-size:0.8rem; margin-top:15px; color:var(--accent);">👉 Swipe LEFT or click Next to continue</p>
+                    </div>
+                </div>
+            </div>
+            <!-- LAYER 6: REAL ESTATE REALITY CHECK -->
+            <div class="layer" id="layer-6">
+                <div class="layer-content-other">
+                    <div>
+                        <div class="icon-large">🏙️</div>
+                        <h2>Burj Khalifa Real Estate 💸</h2>
+                        <p>HaHaHa! It is very funny and also sad for me that I can't manage to give you a floor inside the **Burj Khalifa Tower** as your birthday gift!</p>
+                        <p style="margin-top:12px; color:#ff4757; font-weight:600;">Though, I checked my bank accounts and pocket money. Wow! I have exactly 50 Taka🙊.
+                        </p><br />
+                        <p>Let's swipe left to see what I can give you with this budget...</p>
+                    </div>
+
+                    <div>
+                        <p style="font-size:0.8rem; margin-top:15px; color:var(--accent);">👉 Swipe LEFT or click Next to continue</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LAYER 7: K-DRAMA MEETS BURJ KHALIFA COMBATION -->
+            <div class="layer" id="layer-7">
+                <div class="layer-content-other">
+                    <div>
+                        <h2>The Custom Co-Tenant Combo 🕴️</h2>
+                        <p>Behold! Your custom 50 Taka package is ready to occupy the Burj Khalifa tower top floor alongside you:</p>
+                        <img src="" id="k-boy" class="image-frame-2" style="max-height:175px;" alt="Premium Dream Boy">
+                        <p style="font-size:0.88rem; color:var(--accent); font-weight:500;">Specs: 20 years old, 6ft tall, Six-pack Abs, Deeply Religious, Millionaire, Handsome, Smart, Intelligent, Edu Topper, and Korean, who will fix all your in-out programming parts!</p>
+                        <p style="color:aquamarine">Khela hoppe?👉👈🙈</p>
+                    </div>
+                    <div>
+                        <p style="font-size:0.8rem; margin-top:15px; color:var(--accent);">👉 Swipe LEFT or click Next to continue</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LAYER 8: REELS AND LITERATURE SPLIT -->
+            <div class="layer" id="layer-8" style="display:">
+                <div class="layer-content-other">
+                    <div>
+                        <div class="icon-large">📚</div>
+                        <h2>The Intellectual Novelist</h2>
+                        <p>Love to sit back and enjoy reading famous bestselling adult novels?<span>&#128521;</span></p>
+                        <p><span>&#128077</span>Alright, as a growing girl you are, it's high time to explore yourself. Learn new things and get experience to become a skillful, fast, and intellectual girl in this era, right?<span>&#x2764;</span> </p>
+                        </p>Keep going! Don't stop!! Be brave!!!, gurl. Aquire knowledge and skills in every way...</p>
+                        <p style="margin-top:14px; color:var(--primary); font-style:italic; font-weight:600;">...yet you still spend hours hidden under the covers visiting online shops, laughing at funny short videos, scrolling stories, and watching comedy memes online!<span>&#128514;</span></p>
+                    </div>
+
+                    <div>
+                        <p style="font-size:0.8rem; margin-top:15px; color:var(--accent);">👉 Swipe LEFT or click Next to continue</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LAYER 9: ART APPRECIATION EXHIBIT -->
+            <div class="layer" id="layer-9">
+                <div class="layer-content-other">
+                    <div>
+                        <h2>Artistic Masterpiece 🎨</h2>
+                        <p>All jokes aside, your passion for drawing sketches is incredible. You possess a unique vision to find beauty and sketch it into reality.</p>
+                        <div class="grid-1x1">
+                            <div class="grid-1x3">
+                                <img src="" id="draw-1" class="grid-img" alt="Draw 1">
+                                <img src="" id="jerin-2" class="grid-img" alt="Jein 2">
+                                <img src="" id="draw-3" class="grid-img" alt="Draw 3">
+                            </div>
+                            <img src="" id="draw-4" class="grid-img" alt="Draw 4">
+
+                            <p style="font-size:0.92rem;">Keep painting, sketching, and making your around look beautiful.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p style="font-size:0.8rem; margin-top:15px; color:var(--accent);">👉 Swipe LEFT or click Next to continue</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LAYER 10: METRIC PROFILE SCANNER -->
+            <div class="layer" id="layer-10">
+                <div class="layer-content-other">
+                    <div>
+                        <h2>Biometric AI Diagnostics 🔍</h2>
+                        <p>Let's run a real-time system check on your profile credentials to verify your true power metrics:</p>
+                        <div class="scanner-container">
+                            <button class="btn" id="scan-btn" onclick="startScan()" style="width:100%;">Initialize Diagnostic Scan</button>
+                            <div class="scan-bar" id="scan-bar"></div>
+                            <div class="scan-results" id="scan-results">
+                                <p>✨ <strong>Pretty Rating:</strong> 100% Ultra Pro Maxed Out Matrix</p>
+                                <p>✨ <strong>Intelligence Quotient:</strong> Advanced Genius</p>
+                                <p>✨ <strong>Drama Queen Factor:</strong> 999% Dangerous Overload!🎭</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p style="font-size:0.8rem; margin-top:15px; color:var(--accent);">👉 Swipe LEFT or click Next to continue</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LAYER 11: FINAL BALLOON FLUID PARTY PARTY -->
+            <div class="layer" id="layer-11">
+                <div class="layer-content-main">
+
+                    <div class="icon-large">🎂</div>
+                    <h2 style="color:#fff; text-shadow:0 0 12px var(--primary);">Birthday Wishes on turning 14, Jerin!</h2>
+                    <img src="" id="party-frame" class="image-frame" alt="Happy Birthday Celebration Frame">
+                    <p style="color:#fff; font-size:0.95rem;">You are the prettiest, coolest, funniest friend I can trust and rely on. Have a spectacular birthday! Keep growing, glowing, and slaying!</p>
+                    <button class="btn" onclick="burstConfetti()" style="margin-top:18px; background:var(--primary); box-shadow:0 5px 15px rgba(255,107,129,0.4);">Celebrate More! 🥳</button>
+
+                </div>
+            </div>
+            <!-- SYSTEM BACK/FORWARD CONTROL INTERFACE -->
+            <div class="nav-controls" id="nav-controls">
+                <button class="btn" id="prev-btn" onclick="navigateButton(-1)">Previous</button>
+                <div class="progress-dots" id="progress-dots"></div>
+                <button class="btn" id="next-btn" onclick="navigateButton(1)">Next</button>
+            </div>
+
+        </div>
+
+
+    </div>
+</body>
+
+</html>
