@@ -11,34 +11,43 @@
         document.getElementById('draw-4').src = "assets/draw-4.jpg";
         document.getElementById('party-frame').src = "assets/party-frame.jpg";
 
-function verifyLogin() {
+//LOGIN SECTION:
+        async function sha256(message) {
+            const msgUint8 = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+        }
+
+        async function verifyLogin() {
             const nameInput = document.getElementById('login-username').value.trim();
             const pinInput = document.getElementById('login-pin').value.trim();
             const errorMsg = document.getElementById('login-error');
 
-            // এখানে নাম এবং পিন সেট করা হয়েছে (Case-insensitive নামের জন্য lowercase করা হয়েছে)
-            const targetName = "amVyaW4yNzEwMjY=";
-            const targetPIN = "MjcxMDI2";
+            const secureNameHash = "1c27fa8021c7e237d0e1c7a5744d6d9542c538f75829d01e10eb1edf8157c6e1";
+            const securePinHash = "0a2ee895783eb30003f8ec3baf29f3b6ac4af8ab80a8eec3161db9ed1f8148a1";
 
-            if (nameInput.toLowerCase() === targetName && pinInput === targetPIN) {
-                // সঠিক হলে লগইন স্ক্রিনটি স্লাইড আউট হয়ে ভ্যানিশ হয়ে যাবে
-                const overlay = document.getElementById('login-overlay');
-                overlay.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-                overlay.style.opacity = "0";
-                overlay.style.transform = "scale(1.1)";
+            try {
+                const inputNameHash = await sha256(nameInput);
+                const inputPinHash = await sha256(pinInput);
 
-                setTimeout(() => {
-                    overlay.style.display = "none";
-                    // প্রথম গিফটের বক্সে অটো ফোকাস বা একটা কনফেটি বাস্ট দিতে পারেন
-                    if (typeof burstConfetti === "function") burstConfetti();
-                }, 600);
-            } else {
-                // ভুল তথ্য দিলে লাল রঙের এরর মেসেজ শো করবে
-                errorMsg.style.display = "block";
-                errorMsg.innerText = "❌ Intruder Alert! Invalid Diva Credentials! 😜";
+                if (inputNameHash === secureNameHash && inputPinHash === securePinHash) {
+                    const overlay = document.getElementById('login-overlay');
+                    overlay.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+                    overlay.style.opacity = "0";
+                    overlay.style.transform = "scale(1.1)";
 
-                // ইনপুট বক্স একটু কাঁপানোর জন্য ছোট ট্রিক
-                document.getElementById('login-pin').style.borderColor = "#ff4757";
+                    setTimeout(() => {
+                        overlay.style.display = "none";
+                        if (typeof burstConfetti === "function") burstConfetti();
+                    }, 600);
+                } else {
+                    errorMsg.style.display = "block";
+                    errorMsg.innerText = "❌ Intruder Alert! SHA-256 Signature Mismatch! 😜";
+                    document.getElementById('login-pin').style.borderColor = "#ff4757";
+                }
+            } catch (err) {
+                console.error("Crypto System Error:", err);
             }
         }
 
@@ -47,14 +56,12 @@ function verifyLogin() {
         const finalLayerCount = 11;
         let isUnlocked = false;
 
-        // Variables to handle swipe gestures
         let touchStartX = 0;
         let touchEndX = 0;
-        const swipeThreshold = 50; // Minimum sliding distance in pixels to count as a swap
+        const swipeThreshold = 50; 
 
         const mainCard = document.getElementById('main-card');
 
-        // Capture touch coordinates on mobile/touch displays
         mainCard.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
         }, {
@@ -68,9 +75,8 @@ function verifyLogin() {
             passive: true
         });
 
-        // Evaluates horizontal vector displacements to step layers left or right
         function handleSwipeGesture() {
-            if (!isUnlocked) return; // Prevent swipe gestures before opening the gift box
+            if (!isUnlocked) return;
 
             const displacement = touchEndX - touchStartX;
 
@@ -107,24 +113,20 @@ function verifyLogin() {
             const targetElement = document.getElementById(`layer-${activeLayer}`);
             targetElement.classList.add('active');
 
-            // Apply corresponding slide direction layout vectors
             if (animationDirection === 'right') {
                 targetElement.classList.add('slide-from-right');
             } else if (animationDirection === 'left') {
                 targetElement.classList.add('slide-from-left');
             }
 
-            // Sync button controller visibility state flags
             document.getElementById('prev-btn').disabled = (activeLayer === 2);
             document.getElementById('next-btn').style.visibility = (activeLayer === finalLayerCount) ? 'hidden' : 'visible';
 
-            // Synchronize step-indicator tracking dot arrays
             const dots = document.querySelectorAll('.dot');
             dots.forEach((d, idx) => {
                 d.classList.toggle('active', idx === (activeLayer - 1));
             });
 
-            // HANDLE BACKGROUND LAYER TRANMUTATIONS
             if (activeLayer === finalLayerCount) {
                 clearInterval(particleInterval);
                 particleContainer.innerHTML = '';
@@ -253,3 +255,28 @@ function verifyLogin() {
         }
         mainLoop();
         buildTrackingDots();
+
+// --- press ENTER button to submit ---
+        document.addEventListener("DOMContentLoaded", () => {
+            const nameInputField = document.getElementById('login-username');
+            const pinInputField = document.getElementById('login-pin');
+
+
+            if (nameInputField) {
+                nameInputField.addEventListener("keypress", (event) => {
+                    if (event.key === "Enter") {
+                        event.preventDefault();
+                        pinInputField.focus();
+                    }
+                });
+            }
+
+            if (pinInputField) {
+                pinInputField.addEventListener("keypress", (event) => {
+                    if (event.key === "Enter") {
+                        event.preventDefault();
+                        verifyLogin();
+                    }
+                });
+            }
+        });
