@@ -13,7 +13,7 @@
 
         // --- CORE NAVIGATION STATE & TOUCH INSTANTIATION ---
         let activeLayer = 1;
-        const finalLayerCount = 11;
+        const finalLayerCount = 10;
         let isUnlocked = false;
 
         // Variables to handle swipe gestures
