@@ -11,47 +11,6 @@
         document.getElementById('draw-4').src = "assets/draw-4.jpg";
         document.getElementById('party-frame').src = "assets/party-frame.jpg";
 
-        //LOGIN SECTION:
-        async function sha256(message) {
-            const msgUint8 = new TextEncoder().encode(message);
-            const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
-        }
-
-        async function verifyLogin() {
-            const nameInput = document.getElementById('login-username').value.trim();
-            const pinInput = document.getElementById('login-pin').value.trim();
-            const errorMsg = document.getElementById('login-error');
-
-            const secureNameHash = "1c27fa8021c7e237d0e1c7a5744d6d9542c538f75829d01e10eb1edf8157c6e1";
-            const securePinHash = "0a2ee895783eb30003f8ec3baf29f3b6ac4af8ab80a8eec3161db9ed1f8148a1";
-
-            try {
-                const inputNameHash = await sha256(nameInput);
-                const inputPinHash = await sha256(pinInput);
-
-                if (inputNameHash === secureNameHash && inputPinHash === securePinHash) {
-                    // buildMainBirthdayLayers();
-                    const overlay = document.getElementById('login-overlay');
-                    overlay.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-                    overlay.style.opacity = "0";
-                    overlay.style.transform = "scale(1.1)";
-
-                    setTimeout(() => {
-                        overlay.style.display = "none";
-                        if (typeof burstConfetti === "function") burstConfetti();
-                    }, 600);
-                } else {
-                    errorMsg.style.display = "block";
-                    errorMsg.innerText = "❌ Intruder Alert! Credentials Mismatched! 😜";
-                    document.getElementById('login-pin').style.borderColor = "#ff4757";
-                }
-            } catch (err) {
-                console.error("Crypto System Error:", err);
-            }
-        }
-
         // --- CORE NAVIGATION STATE & TOUCH INSTANTIATION ---
         let activeLayer = 1;
         const finalLayerCount = 11;
